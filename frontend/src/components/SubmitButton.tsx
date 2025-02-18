@@ -1,5 +1,14 @@
 import Button from '@mui/material/Button';
+import styled from 'styled-components';
 
-export const SubmitButton = () => {
-  return <Button variant="contained">Hello world</Button>;
+interface SubmitButtonProps {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const StyledButton = styled(Button)`
+  width: 50%;
+`
+
+export const SubmitButton = ({onClick}: SubmitButtonProps) => {
+  return <StyledButton variant="contained" onClick={onClick}>Submit</StyledButton>;
 }

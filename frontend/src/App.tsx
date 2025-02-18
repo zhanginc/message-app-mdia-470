@@ -1,12 +1,16 @@
 import './App.css'
-import ButtonUsage from './components/SubmitButton'
+import { MessageInputScreen } from './pages/MessageInputScreen';
+import { MessageSubmissionScreen } from './pages/MessageSubmissionScreen';
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
 
   return (
-    <>
-      <ButtonUsage />
-    </>
+     <Routes>
+             <Route path="/" element={ <MessageInputScreen />} />
+             <Route path="/submission" element={<MessageSubmissionScreen />} />
+      </Routes>
+      
   )
 }
 
