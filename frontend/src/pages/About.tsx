@@ -9,7 +9,7 @@ import { StyledContainer,
 
 export const About = () => {
     const navigate = useNavigate();
-    
+
     return(
         <StyledContainer>
             <StyledContent>
@@ -29,14 +29,8 @@ export const About = () => {
                     to the rose garden year round 
                     and making community
                 </StyledDescription>
-
             </StyledContent>
-            
-
             <Footer />
-        </StyledContainer>
-        
-
-        
+        </StyledContainer>    
     )
 }

@@ -11,22 +11,17 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push } from "firebase/database";
 import { profanityFilter } from "../profanityFilter";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyB8y_O8HgA-AvDg0Ql6-BBvrdPqt6Tekzs",
-  authDomain: "media-470-project.firebaseapp.com",
-  projectId: "media-470-project",
-  storageBucket: "media-470-project.firebasestorage.app",
-  messagingSenderId: "716941064622",
-  appId: "1:716941064622:web:a7a6c8949c838e8204b03f",
-  measurementId: "G-40BGXX3MV5"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
@@ -62,7 +57,7 @@ export const MessageInputScreen = () => {
     const navigate = useNavigate();
     const [message, setMessage] = useState("");
 
-    const handleSubmission = async () => {
+    const handleSubmission = async () => { // cleans inputs
         if (!message.trim()) {
             alert("Please enter a message before submitting.");
             return;
@@ -80,7 +75,6 @@ export const MessageInputScreen = () => {
               text: message,
             });
       
-            console.log("Message added successfully!");
             setMessage(""); 
             navigate("/submission"); 
           } catch (error) {
@@ -104,7 +98,6 @@ export const MessageInputScreen = () => {
                     <SubmitButton onClick={handleSubmission}/>
                 </StyledInputContainer>
             </StyledContent>
-          
           <Footer />   
         </StyledContainer>
     );

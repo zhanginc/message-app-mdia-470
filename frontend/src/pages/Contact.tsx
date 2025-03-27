@@ -28,12 +28,7 @@ export const Contact = () => {
                 </StyledDescription>
 
             </StyledContent>
-            
-
             <Footer />
-        </StyledContainer>
-        
-
-        
+        </StyledContainer>  
     )
 }
