@@ -1,3 +1,4 @@
+import leoProfanity from "leo-profanity";
 import { SubmitButton } from '../components/SubmitButton';
 import { MessageInput } from '../components/MessageInput';
 import Box from '@mui/material/Box';
@@ -5,9 +6,10 @@ import styled from 'styled-components';
 import { Footer } from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-
+import { StyledContainer } from '../components/PageStyles';
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push } from "firebase/database";
+import { profanityFilter } from "../profanityFilter";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -29,16 +31,6 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 
-const StyledContainer = styled.div`
-      display: flex;
-      flex-direction: column;
-      height: 100dvh;
-      width: 100vw;
-      justify-content: center;
-      box-sizing: border-box;
-      padding: 30px;
-      justify-content: space-between;
-`
 const StyledContent = styled.div`
       display: flex;
       flex-direction: column;
@@ -77,6 +69,13 @@ export const MessageInputScreen = () => {
           }
       
           try {
+            if (leoProfanity.check(message) || profanityFilter.includes(message.toLowerCase())) {
+                alert("Word(s) not allowed.");
+                return;
+            }
+            const cleanText = leoProfanity.clean(message); 
+            setMessage(cleanText);
+
             await push(ref(db, "notes/"), {
               text: message,
             });

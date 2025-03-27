@@ -16,10 +16,8 @@ function App() {
         "&::before": {
           content: '""',
           position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
+          inset: 0,
+          height: "100vh",
           backgroundImage: "url('/paper-background.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -28,12 +26,12 @@ function App() {
         },
       }}
         >
-            <Routes>
-                  <Route path="/" element={ <MessageInputScreen />} />
-                  <Route path="/submission" element={<MessageSubmissionScreen />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/contact" element={<Contact />} />
-              </Routes>
+        <Routes>
+              <Route path="/" element={ <MessageInputScreen />} />
+              <Route path="/submission" element={<MessageSubmissionScreen />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+        </Routes>
             
       </Box>
     )

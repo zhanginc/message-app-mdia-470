@@ -1,7 +1,6 @@
 import TextField from '@mui/material/TextField';
 import styled from 'styled-components';
 
-
 interface MessageInputProps {
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
